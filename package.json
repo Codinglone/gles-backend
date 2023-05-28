@@ -20,6 +20,7 @@
    },
    "scripts": {
       "start": "ts-node src/index.ts",
+      "dev": "nodemon src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
 }
