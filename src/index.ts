@@ -1,5 +1,6 @@
 import { AppDataSource } from "./data-source"
-import { Users } from "./entity/Users"
+const fastify = require('fastify')({logger: true})
+
 
 AppDataSource.initialize().then(async () => {
 
