@@ -15,6 +15,8 @@ fastify.register(require('@fastify/swagger'), {
     }
 })
 
+fastify.register(require('./routes/users/users.routes'), {prefix: 'api/v1'})
+
 const start = async () => {
     try {
         await fastify.listen({ port: PORT })
