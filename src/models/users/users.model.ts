@@ -7,11 +7,15 @@ export class UsersModel {
 
     static createUser = async (payload: usersPayload): Promise<any> => {
         const email = payload.email 
-        const foundUser =await usersRepo.findOneBy({
+        const foundUser = await usersRepo.findOneBy({
             email
         })
-        if(!foundUser){
+        if(foundUser) {
+            console.log(foundUser);
             
+            throw new Error('Email Already exists😣 Try Again 🤗')
+        }
+        else {
             const user = new Users()
             const hashedPassword = await bcrypt.hash(payload.password, 10)
             return await usersRepo.save({
@@ -20,11 +24,7 @@ export class UsersModel {
                 password_hash: hashedPassword
             })
         }
-        else {
-            return {
-                message: `${payload.email} Already exists😡, Try Again!🤗`
-            }
-        }
+        
         
     }
 }

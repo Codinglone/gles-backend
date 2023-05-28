@@ -26,7 +26,7 @@ const start = async () => {
         
         }).catch(error => console.log(error))
     } catch (error) {
-        console.log(error)
+        fastify.log(error)
         process.exit(1)
     }
 }
